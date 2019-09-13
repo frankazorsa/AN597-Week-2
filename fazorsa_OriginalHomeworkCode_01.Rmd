@@ -8,7 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-#New editions!
 #Homewor1
 #Challenge 1: Create a vector of 1 word character strings.
 x <- "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
@@ -20,6 +19,14 @@ a <- 1:121
 b <- a[seq(1, length(a), 3)]
 b
 
+#Taking out the punctuation
+x1 <- gsub("[[:punct:][:blank:]]+","", x)
+x1
+strsplit(x1,'')
+#In order to select every third element of this vector I used the same function as above.
+c <- 1:97
+d <- c[seq(1, length(c),3)]
+d
 #Challenge 2: 
 m <- matrix (data=1:80, nrow = 8,ncol = 10,byrow = FALSE)
 m
