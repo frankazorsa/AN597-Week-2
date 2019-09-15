@@ -1,0 +1,144 @@
+---
+title: "fazorsa_OriginalHomeworkCode_01"
+author: "frank"
+date: "9/11/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Homewor1
+#peer comment: use ```{r} before your code, and ```after so you can have a shell and see our code results directly.
+
+#Challenge 1: Create a vector of 1 word character strings.
+x <- "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+x
+#I used strsplit without space "" to divide all characters.
+strsplit(x,"")
+#In order to select every third element of this vector I used this function.
+
+#peer comment: the homework state that the vector is a one word character string. so when you split the sentence, split by space instead of "".
+a <- 1:121
+b <- a[seq(1, length(a), 3)]
+b
+
+#Taking out the punctuation
+x1 <- gsub("[[:punct:][:blank:]]+","", x)
+x1
+strsplit(x1,'')
+#In order to select every third element, without the punctuation and spaces of this vector, I used the same function as above.
+c <- 1:97
+#To extract every third element I used
+d <- c[seq(1, length(c),3)]
+d
+#Challenge 2: 
+m <- matrix (data=1:80, nrow = 8,ncol = 10,byrow = FALSE)
+m
+#Extract the 2nd, 3rd, and 6th columns and assign them to the variable x
+x<-c(m[2],m[3],m[6])
+x
+#Extract the 6th to 8th row and assign them to the variable x
+x<-c(m[,6],m[,8])
+x
+#Extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x.
+x<-c(m[2:6],m[2:9])
+x
+#Challenge 3
+#Construct a 4-dimensional, 400 element array (5x5x4x4) named a consisting of the numbers 400 to 1 (i.e., a descending series)
+a <- array(data = 400:1,dim = c(5,5,4,4))
+a
+#Given this matrix, what would the following return?
+a[1, 1, 1, 2]
+#The value 300, which is an element in the table ,1,2 at row1/column1
+a[2, 3, 2, ]
+#The values: 364, 264, 164, and 64. Which are located in every second table in row 2/column3
+a[1:5, 1:5, 3, 3]
+#Same values as table ,3,3
+
+#Challenge 4
+#Create a list representing a group of primate taxons. 
+#First we will need to create a vector for the the lowest taxon rank (Platyrrhini, Catarrhini), and then combine the previous one using the function list under Anthropoidea. Follow the same criterion with the other taxa.
+
+#Vector
+Primates <- list("Cebidae","Atelidae","Pitheciidae","Cercopithecidae","Hylobatidae","Hominidae","Tarsiidae","Lorisidae","Galagidae","Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+#peer comment: since you use primates variable and also names(primates) , the first step is useless actually.
+
+names(Primates) <-c("Cebidae","Atelidae","Pitheciidae","Cercopithecidae","Hylobatidae","Hominidae","Tarsiidae","Lorisidae","Galagidae","Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+#Do not include this part.
+#peer comment: since you use primates variable and also names(primates) , the first step is useless actually.
+
+Platyrrhini<-c("Cebidae","Atelidae","Pitheciidae")
+Catarrhini<-c("Cercopithecidae","Hylobatidae","Hominidae")
+
+#Listing previous taxons in Anthropoidea
+Anthropoidea<-list(Platyrrhini,Catarrhini)
+
+#Naming the row and creating a new vector
+names(Anthropoidea)<-c("Platyrrhini","Catarrhini")
+
+#Vector
+Tarsioidea<-c("Tarsiidae")
+
+#Listing above taxons in Haplorhini
+Haplorhini<-list(Anthropoidea,Tarsioidea)
+
+#Naming the row and creating a new vector.
+names(Haplorhini)<-c("Anthropoidea","Tarsioidea")
+
+#Listing above taxons in one Lorisoidea
+Lorisoidea<-c("Lorisidae","Galagidae")
+
+#Naming the row and creating a new vector.
+Lemuroidea<-c("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+
+#Listing above taxons in Trepsirhini
+Strepsirhini<-list(Lorisoidea,Lemuroidea)
+
+#Naming the row and creating a new vector
+names(Strepsirhini)<-c("Lorisoidea","Lemuroidea")
+
+#Listing above taxons in Primates
+Primates<-list(Haplorhini,Strepsirhini)
+
+#Naming the row and creating a new vector
+names(Primates)<-c("Haplorhini","Strepsirhini")
+
+Primates
+
+#Challenge 5
+#Store the following numbers as a 5x3 matrix: 3,0,1,23,1,2,33,1,1,42,0,1,41,0,2.
+b <-matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5,ncol = 3,byrow = TRUE)
+b
+#Coerce the matrix to a data frame
+bdf <- as.data.frame(b)
+bdf
+#As a data frame, coerce the second column to be logical-valued
+bdf[,2] = as.logical(2)
+bdf
+#As a data frame, coerce the third column to be factor-valued
+bdf[,3] = as.logical(3)
+bdf
+#Use the str() command to show the data type for each variable in this dataframe.
+str(bdf)
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
