@@ -23,8 +23,9 @@ b
 x1 <- gsub("[[:punct:][:blank:]]+","", x)
 x1
 strsplit(x1,'')
-#In order to select every third element of this vector I used the same function as above.
+#In order to select every third element, without the punctuation and spaces of this vector, I used the same function as above.
 c <- 1:97
+#To extract every third element I used
 d <- c[seq(1, length(c),3)]
 d
 #Challenge 2: 
@@ -56,33 +57,44 @@ a[1:5, 1:5, 3, 3]
 #First we will need to create a vector for the the lowest taxon rank (Platyrrhini, Catarrhini), and then combine the previous one using the function list under Anthropoidea. Follow the same criterion with the other taxa.
 
 #Vector
+Primates <- list("Cebidae","Atelidae","Pitheciidae","Cercopithecidae","Hylobatidae","Hominidae","Tarsiidae","Lorisidae","Galagidae","Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+
+names(Primates) <-c("Cebidae","Atelidae","Pitheciidae","Cercopithecidae","Hylobatidae","Hominidae","Tarsiidae","Lorisidae","Galagidae","Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+
 Platyrrhini<-c("Cebidae","Atelidae","Pitheciidae")
 Catarrhini<-c("Cercopithecidae","Hylobatidae","Hominidae")
 
-#Listing previous taxons in one group.
-Anthropoidea<-list(platyrrhini,Catarrhini)
+#Listing previous taxons in Anthropoidea
+Anthropoidea<-list(Platyrrhini,Catarrhini)
 
-#Namming the row and creating a new vector
-names(Anthropoidea)<-c("platyrrhini","Catarrhini")
+#Naming the row and creating a new vector
+names(Anthropoidea)<-c("Platyrrhini","Catarrhini")
 
 #Vector
 Tarsioidea<-c("Tarsiidae")
 
-#Listing above taxons in one group.
+#Listing above taxons in Haplorhini
 Haplorhini<-list(Anthropoidea,Tarsioidea)
 
+#Naming the row and creating a new vector.
 names(Haplorhini)<-c("Anthropoidea","Tarsioidea")
 
+#Listing above taxons in one Lorisoidea
 Lorisoidea<-c("Lorisidae","Galagidae")
 
+#Naming the row and creating a new vector.
 Lemuroidea<-c("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
 
-trepsirhini<-list(Lorisoidea,Lemuroidea)
+#Listing above taxons in Trepsirhini
+Strepsirhini<-list(Lorisoidea,Lemuroidea)
 
+#Naming the row and creating a new vector
 names(Strepsirhini)<-c("Lorisoidea","Lemuroidea")
 
+#Listing above taxons in Primates
 Primates<-list(Haplorhini,Strepsirhini)
 
+#Naming the row and creating a new vector
 names(Primates)<-c("Haplorhini","Strepsirhini")
 
 Primates
@@ -94,7 +106,7 @@ b
 #Coerce the matrix to a data frame
 bdf <- as.data.frame(b)
 bdf
-#As a data frame, coerce the second column to tbe logical-valued
+#As a data frame, coerce the second column to be logical-valued
 bdf[,2] = as.logical(2)
 bdf
 #As a data frame, coerce the third column to be factor-valued
